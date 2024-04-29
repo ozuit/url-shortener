@@ -1,0 +1,61 @@
+main {
+  height: 100vh;
+  font-family: "Avenir", sans-serif;
+}
+
+.header-wrapper {
+  width: 60%;
+  margin: auto;
+  padding-top: 100px;
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  color: #e9c46a;
+  font-size: 40px;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.input-wrapper {
+  width: 80%;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: 70%;
+  border-radius: 10px;
+}
+
+.output-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  justify-content: space-between;
+  background-color: #e9c46a;
+  margin: auto;
+  padding: 5px;
+  border: 3px solid #e9c46a;
+  border-radius: 10px;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.content-row {
+  display: flex;
+}
