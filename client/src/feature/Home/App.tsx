@@ -2,21 +2,37 @@ import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { shortenUrlApi } from '../../api/shortenUrlApi';
+import ToastMessage, { ToastProps } from '../../component/Toast';
 import './App.css';
 
 function App() {
   const [, copy] = useCopyToClipboard();
   const [longUrl, setLongUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
+  const [alert, setAlert] = useState<ToastProps>({
+    visible: false,
+    severity: 'success',
+    message: '',
+  });
 
   const handleShortenUrl = async () => {
-    const shortedUrl = await shortenUrlApi(longUrl);
-    setShortUrl(shortedUrl);
+    try {
+      const shortedUrl = await shortenUrlApi(longUrl);
+      setShortUrl(shortedUrl);
+      setAlert({ visible: true, message: 'Shorten URL successful!' });
+    } catch (error: any) {
+      setAlert({ visible: true, severity: 'error', message: error?.message });
+    }
   };
 
   const handleClear = () => {
     setShortUrl('');
     setLongUrl('');
+  };
+
+  const handleCopyShortUrl = () => {
+    copy(shortUrl);
+    setAlert({ visible: true, message: 'Copy successful!' });
   };
 
   return (
@@ -45,12 +61,13 @@ function App() {
           <div className="output-wrapper">
             <div className="content-row">Your short URL: {shortUrl}</div>
             <div id="new-url" className="content-row"></div>
-            <Button variant="contained" onClick={() => copy(shortUrl)}>
+            <Button variant="contained" onClick={handleCopyShortUrl}>
               Copy
             </Button>
           </div>
         )}
       </div>
+      <ToastMessage {...alert} onClose={() => setAlert({ visible: false })} />
     </main>
   );
 }
