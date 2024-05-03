@@ -12,7 +12,7 @@ Copy `env.example` to `.env` file and replace with your values.
 $ npm install
 ```
 
-## Running the app
+## Running server
 
 ```bash
 # development
@@ -25,17 +25,12 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Running client
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+# development
+$ cd client
+$ npm run start
 ```
 
 ## Author
