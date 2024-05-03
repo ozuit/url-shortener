@@ -1,5 +1,6 @@
 import { Button, TextField } from '@mui/material';
 import { useState } from 'react';
+import QRCode from 'react-qr-code';
 import { useCopyToClipboard } from 'usehooks-ts';
 import { shortenUrlApi } from '../../api/shortenUrlApi';
 import ToastMessage, { ToastProps } from '../../component/Toast';
@@ -66,6 +67,7 @@ function App() {
             </Button>
           </div>
         )}
+        {shortUrl && <QRCode style={{ margin: '0 auto' }} value={shortUrl} />}
       </div>
       <ToastMessage {...alert} onClose={() => setAlert({ visible: false })} />
     </main>
